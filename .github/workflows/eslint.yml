@@ -1,4 +1,4 @@
-name: "TypeScript CI"
+name: "Eslint CI"
 on:
   workflow_dispatch:
   push:
@@ -24,4 +24,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
       - run: yarn
-      - run: yarn test:typescript
+      - run: yarn test:eslint
