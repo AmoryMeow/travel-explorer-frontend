@@ -11,10 +11,12 @@
     "test:eslint": "eslint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.2",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
