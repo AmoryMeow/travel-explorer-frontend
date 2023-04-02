@@ -1,4 +1,5 @@
 import { useTranslation, LanguageSwitcher } from "@package/i18n";
+import "./i18n/config";
 
 function App() {
   const { t, i18n } = useTranslation(["common", "hello"]);
