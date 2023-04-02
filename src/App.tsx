@@ -1,12 +1,7 @@
-import { useTranslation } from "@package/i18n";
-import "./i18n/config";
+import { useTranslation, LanguageSwitcher } from "@package/i18n";
 
 function App() {
   const { t, i18n } = useTranslation(["common", "hello"]);
-
-  const changeLanguage = (language: string) => () => {
-    i18n.changeLanguage(language);
-  };
 
   return (
     <>
@@ -19,8 +14,7 @@ function App() {
       </h1>
       <button>{t("button_ok")}</button>
       <button>{t("button_cancel")}</button>
-      <button onClick={changeLanguage("en")}>English</button>
-      <button onClick={changeLanguage("ru")}>Russian</button>
+      <LanguageSwitcher />
     </>
   );
 }

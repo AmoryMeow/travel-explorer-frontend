@@ -24,7 +24,7 @@ type UseTranslationsResponseTwo<
 > = UseTranslationResponse<Key<A> | KeyFull<B>>;
 
 export function useTranslation<T extends Namespaces>(
-  namespaces: T | [T],
+  namespaces?: T | [T],
   options?: UseTranslationOptions
 ): UseTranslationResponse<T>;
 export function useTranslation<T extends Namespaces, U extends Namespaces>(
