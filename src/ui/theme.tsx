@@ -3,12 +3,14 @@ import Button from "@mui/material/Button";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
 
-export type Theme = {
-  theme: string;
-  changeTheme: (theme: string) => void;
-};
+export const themes = ["light", "dark"] as const;
 
-export const themes: string[] = ["light", "dark"];
+export type Themes = typeof themes[number];
+
+export type Theme = {
+  theme: Themes;
+  changeTheme: (theme: Themes) => void;
+};
 
 const ThemeContext = createContext<Theme>({
   theme: "light",
@@ -17,7 +19,7 @@ const ThemeContext = createContext<Theme>({
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const savedTheme = window.localStorage.getItem("theme") ?? "";
+  const savedTheme = window.localStorage.getItem("theme") as Themes;
 
   const currentTheme = themes.includes(savedTheme)
     ? savedTheme
@@ -25,8 +27,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     ? "dark"
     : "light";
 
-  const [theme, setTheme] = useState(currentTheme);
-  const changeTheme = (theme: string) => {
+  const [theme, setTheme] = useState<Themes>(currentTheme);
+  const changeTheme = (theme: Themes) => {
     setTheme(theme);
     window.localStorage.setItem("theme", theme);
   };

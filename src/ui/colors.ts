@@ -1,4 +1,4 @@
-import { useTheme } from "./theme";
+import { useTheme, type Themes } from "./theme";
 
 type Colors = {
   background: string;
@@ -8,7 +8,7 @@ type Colors = {
 export const useColors = (): Colors => {
   const { theme } = useTheme();
 
-  const colors: { [key: string]: Colors } = {
+  const colors: { [key in Themes]: Colors } = {
     dark: {
       background: "#242424",
       color: "rgba(255, 255, 255, 0.87)",
