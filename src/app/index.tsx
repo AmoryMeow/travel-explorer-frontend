@@ -1,6 +1,5 @@
 import { useTranslation, LanguageSwitcher } from "@package/i18n";
-import "../i18n/config";
-import { useTheme, useColors, ThemeSwitcher } from "@package/ui";
+import { useColors, ThemeSwitcher } from "@package/ui";
 
 function App() {
   const { t, i18n } = useTranslation(["common", "hello"]);
