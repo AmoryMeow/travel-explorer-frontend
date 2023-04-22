@@ -1,5 +1,6 @@
 import { colorWithOpacity, useColors } from "@package/ui";
 import { Menu } from "@package/menu";
+import { NavLink, routes } from "@package/routes";
 
 import { Logo } from "./logo";
 
@@ -32,23 +33,25 @@ export const Header = ({ type }: { type: HeaderType }) => {
         zIndex: 10,
       }}
     >
-      <div
+      <NavLink
+        to={routes.home}
         css={{
+          display: "flex",
+          alignItems: "center",
           height: "80px",
           transition: ".2s",
           fontFamily: "Roboto, sans-serif",
           color: colors.color,
           textTransform: "uppercase",
+          textDecoration: "none",
           ...(type === "float" && {
             height: "60px",
           }),
-          display: "flex",
-          alignItems: "center",
         }}
       >
         <Logo />
         <span>Travel explorer</span>
-      </div>
+      </NavLink>
       <Menu />
     </nav>
   );
