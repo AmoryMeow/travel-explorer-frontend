@@ -1,3 +1,4 @@
+import { NavLink, routes } from "@package/routes";
 import { useColors, palette } from "@package/ui";
 
 export const Menu = () => {
@@ -9,15 +10,14 @@ export const Menu = () => {
         display: "flex",
       }}
     >
-      <Item text="Blogs" active />
-      <Item text="Places" />
-      <Item text="My journeys" />
-      <Item text="Sign up" active />
+      <Item to={routes.blogs} text="Blogs" />
+      <Item to={routes.places} text="Places" />
+      <Item to={routes.myJourney} text="My journeys" />
     </ul>
   );
 };
 
-const Item = ({ text, active }: { text: string; active?: boolean }) => {
+const Item = ({ to, text }: { to: string; text: string }) => {
   const colors = useColors();
 
   return (
@@ -28,8 +28,8 @@ const Item = ({ text, active }: { text: string; active?: boolean }) => {
         listStyle: "none",
       }}
     >
-      <a
-        href="#"
+      <NavLink
+        to={to}
         css={{
           color: colors.color,
           padding: "5px 20px",
@@ -37,19 +37,19 @@ const Item = ({ text, active }: { text: string; active?: boolean }) => {
           textTransform: "uppercase",
           transition: ".2s",
           fontFamily: "Roboto, sans-serif",
-          ...(active && {
-            backgroundColor: colors.control,
-            color: palette.white,
-          }),
           "&:hover": [
             {
               opacity: "0.8",
             },
           ],
+          "&.active": {
+            backgroundColor: colors.control,
+            color: palette.white,
+          },
         }}
       >
         {text}
-      </a>
+      </NavLink>
     </li>
   );
 };
