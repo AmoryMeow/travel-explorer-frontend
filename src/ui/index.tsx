@@ -1,3 +1,3 @@
 export { Dropdown } from "./dropdown";
 export { ThemeProvider, useTheme, ThemeSwitcher } from "./theme";
-export { useColors } from "./colors";
+export { useColors, palette, colorWithOpacity } from "./colors";

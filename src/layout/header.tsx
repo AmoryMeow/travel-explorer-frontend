@@ -1,0 +1,55 @@
+import { colorWithOpacity, useColors } from "@package/ui";
+import { Menu } from "@package/menu";
+
+import { Logo } from "./logo";
+
+type HeaderType = "float" | "transparent";
+
+export const Header = ({ type }: { type: HeaderType }) => {
+  const colors = useColors();
+  return (
+    <nav
+      css={{
+        margin: "8px auto",
+        position: "sticky",
+        display: "flex",
+        justifyContent: "space-between",
+        top: "8px",
+        maxWidth: "1920px",
+        width: "100%",
+        height: "100px",
+        padding: "10px 100px",
+        boxSizing: "border-box",
+        transition: ".2s",
+        borderRadius: "16px",
+        ...(type === "float" && {
+          height: "80px",
+          padding: "10px 50px",
+          backgroundColor: colorWithOpacity(colors.background, 0.5),
+          boxShadow: "10px 10px 16px -16px rgba(0,0,0,0.5)",
+          backdropFilter: "saturate(200%) blur(10px)",
+        }),
+        zIndex: 10,
+      }}
+    >
+      <div
+        css={{
+          height: "80px",
+          transition: ".2s",
+          fontFamily: "Roboto, sans-serif",
+          color: colors.color,
+          textTransform: "uppercase",
+          ...(type === "float" && {
+            height: "60px",
+          }),
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Logo />
+        <span>Travel explorer</span>
+      </div>
+      <Menu />
+    </nav>
+  );
+};
