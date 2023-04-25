@@ -26,7 +26,7 @@ type UseTranslationsResponseTwo<
 export function useTranslation<T extends Namespaces>(
   namespaces?: T | [T],
   options?: UseTranslationOptions
-): UseTranslationResponse<T>;
+): UseTranslationResponse<Key<T>>;
 export function useTranslation<T extends Namespaces, U extends Namespaces>(
   namespaces: [T, U],
   options?: UseTranslationOptions

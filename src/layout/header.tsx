@@ -1,5 +1,5 @@
 import { colorWithOpacity, useColors } from "@package/ui";
-import { Menu } from "@package/menu";
+import { Actions, Menu } from "@package/menu";
 import { NavLink, routes } from "@package/routes";
 
 import { Logo } from "./logo";
@@ -52,7 +52,10 @@ export const Header = ({ type }: { type: HeaderType }) => {
         <Logo />
         <span>Travel explorer</span>
       </NavLink>
-      <Menu />
+      <div css={{ display: "flex" }}>
+        <Menu />
+        <Actions />
+      </div>
     </nav>
   );
 };

@@ -1,6 +1,6 @@
-import { useTranslation, LanguageSwitcher } from "@package/i18n";
+import { useTranslation } from "@package/i18n";
 import { Routes, Route, routes } from "@package/routes";
-import { useColors, ThemeSwitcher } from "@package/ui";
+import { useColors } from "@package/ui";
 import { Layout } from "@package/layout";
 
 function App() {
@@ -25,8 +25,6 @@ function App() {
               </h1>
               <button>{t("button_ok")}</button>
               <button>{t("button_cancel")}</button>
-              <LanguageSwitcher />
-              <ThemeSwitcher />
             </>
           }
         />
