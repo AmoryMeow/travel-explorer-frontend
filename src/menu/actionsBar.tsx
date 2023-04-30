@@ -1,13 +1,19 @@
 import { ReactNode, useState } from "react";
 
-import { Button, Dropdown, Space, Avatar, type MenuProps } from "antd";
+import { Button, Space, Avatar } from "antd";
 import {
   UserOutlined,
   SettingOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 
-import { SideBar, useColors, useTheme, ThemeSwitcher } from "@package/ui";
+import {
+  SideBar,
+  useColors,
+  ThemeSwitcher,
+  Dropdown,
+  type DropdownItem,
+} from "@package/ui";
 import { useTranslation, LanguageSwitcher } from "@package/i18n";
 
 export const Actions = () => {
@@ -47,40 +53,39 @@ const Item = ({ children }: { children: ReactNode }) => {
 
 const UserAction = () => {
   const colors = useColors();
-  const { theme } = useTheme();
   const { t } = useTranslation("userAction");
 
-  const menuProps: MenuProps = {
-    theme,
-    items: [
-      {
-        label: t("profile"),
-        key: "profile",
-        onClick: () => console.log("profile"),
-      },
-      {
-        label: t("logOut"),
-        key: "logOut",
-        onClick: () => console.log("logOut"),
-        icon: <LogoutOutlined />,
-      },
-    ],
-  };
+  const menuOptions: DropdownItem[] = [
+    {
+      label: t("profile"),
+      key: "profile",
+      onClick: () => console.log("profile"),
+    },
+    {
+      label: t("logOut"),
+      key: "logOut",
+      onClick: () => console.log("logOut"),
+      icon: <LogoutOutlined />,
+    },
+  ];
 
   return (
-    <Dropdown menu={menuProps}>
-      <Avatar
-        style={{
-          backgroundColor: colors.control,
-          verticalAlign: "middle",
-          color: colors.colorInvert,
-        }}
-        size="large"
-        gap={2}
-      >
-        <UserOutlined />
-      </Avatar>
-    </Dropdown>
+    <Dropdown
+      options={menuOptions}
+      trigger={
+        <Avatar
+          style={{
+            backgroundColor: colors.control,
+            verticalAlign: "middle",
+            color: colors.colorInvert,
+          }}
+          size="large"
+          gap={2}
+        >
+          <UserOutlined />
+        </Avatar>
+      }
+    />
   );
 };
 
