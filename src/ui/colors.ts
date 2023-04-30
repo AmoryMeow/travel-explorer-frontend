@@ -4,6 +4,7 @@ type Colors = {
   layout: string;
   background: string;
   backgroundSelect: string;
+  backgroundHover: string;
   color: string;
   colorMinor: string;
   colorInvert: string;
@@ -18,6 +19,7 @@ export const palette = {
   blue4: "#1a73e8",
   blue5: "#3871e0",
   grey1: "#4d5363",
+  grey2: "#757b88",
   grey4: "#eff1f4",
   grey5: "#f0f2f5",
 };
@@ -30,6 +32,7 @@ export const useColors = (): Colors => {
       layout: palette.blue1,
       background: palette.blue2,
       backgroundSelect: palette.grey1,
+      backgroundHover: palette.grey2,
       color: palette.white,
       colorMinor: palette.blue3,
       colorInvert: palette.blue3,
@@ -39,6 +42,7 @@ export const useColors = (): Colors => {
       layout: palette.grey4,
       background: palette.white,
       backgroundSelect: palette.grey5,
+      backgroundHover: palette.grey5,
       color: palette.blue3,
       colorMinor: palette.grey5,
       colorInvert: palette.white,
