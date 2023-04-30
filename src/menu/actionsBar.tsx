@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 
-import { Button, Space, Avatar } from "antd";
+import { Space, Avatar } from "antd";
 import {
   UserOutlined,
   SettingOutlined,
@@ -13,6 +13,7 @@ import {
   ThemeSwitcher,
   Dropdown,
   type DropdownItem,
+  Button,
 } from "@package/ui";
 import { useTranslation, LanguageSwitcher } from "@package/i18n";
 
@@ -96,9 +97,12 @@ const SettingAction = () => {
 
   return (
     <>
-      <Button shape="circle" size="large" onClick={() => setIsOpen(true)}>
-        <SettingOutlined />
-      </Button>
+      <Button
+        shape="circle"
+        size="large"
+        onClick={() => setIsOpen(true)}
+        icon={<SettingOutlined />}
+      />
 
       <SideBar
         isOpen={isOpen}
