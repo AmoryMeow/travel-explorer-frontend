@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import Button from "@mui/material/Button";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
-import Brightness3Icon from "@mui/icons-material/Brightness3";
+
+import { RadioButton, icons } from "@package/ui";
+import { useTranslation } from "@package/i18n";
 
 export const themes = ["light", "dark"] as const;
 
@@ -44,13 +44,20 @@ export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeSwitcher = () => {
   const { theme, changeTheme } = useTheme();
+  const { t } = useTranslation("theme");
+
+  const options = [
+    { label: t("light"), icon: <icons.Sun />, value: "light" },
+    { label: t("dark"), icon: <icons.Moon />, value: "dark" },
+  ];
 
   return (
-    <Button
-      variant="outlined"
-      onClick={() => changeTheme(theme === "light" ? "dark" : "light")}
-    >
-      {theme === "light" ? <Brightness7Icon /> : <Brightness3Icon />}
-    </Button>
+    <RadioButton
+      options={options}
+      type="button"
+      buttonType="solid"
+      value={theme}
+      onChange={() => changeTheme(theme === "light" ? "dark" : "light")}
+    />
   );
 };

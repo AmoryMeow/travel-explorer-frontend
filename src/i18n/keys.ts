@@ -3,4 +3,5 @@ export default {
   hello: ["welcome"],
   userAction: ["profile", "logOut"],
   settingActions: ["title"],
+  theme: ["light", "dark"],
 } as const;
