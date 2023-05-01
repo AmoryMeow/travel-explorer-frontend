@@ -4,3 +4,5 @@ export { useColors, palette, colorWithOpacity } from "./colors";
 export { SideBar } from "./sidebar";
 export { Select } from "./select";
 export { Button } from "./button";
+
+export * as icons from "./icons";
