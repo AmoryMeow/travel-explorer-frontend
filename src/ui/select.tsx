@@ -45,7 +45,6 @@ export const Select = ({
       labelInValue
       style={{
         width: "100%",
-        maxWidth: "320px",
       }}
     />
   );

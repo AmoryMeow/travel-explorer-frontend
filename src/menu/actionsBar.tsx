@@ -1,4 +1,5 @@
 import { ReactNode, useState } from "react";
+import useLocalStorage from "use-local-storage";
 
 import { Space, Avatar } from "antd";
 import {
@@ -14,6 +15,7 @@ import {
   Dropdown,
   type DropdownItem,
   Button,
+  Select,
 } from "@package/ui";
 import { useTranslation, LanguageSwitcher } from "@package/i18n";
 
@@ -109,9 +111,72 @@ const SettingAction = () => {
         onClose={() => setIsOpen(false)}
         title={t("title")}
       >
-        <LanguageSwitcher />
-        <ThemeSwitcher />
+        <Field label={t("language")} place="left">
+          <LanguageSwitcher />
+        </Field>
+        <Field label={t("theme")} place="left">
+          <ThemeSwitcher />
+        </Field>
+        <Field label={t("currancy")} place="left">
+          <CurrancySwitcher />
+        </Field>
       </SideBar>
     </>
+  );
+};
+
+const Field = ({
+  label,
+  place = "top",
+  children,
+}: {
+  label: string;
+  place?: "top" | "left";
+  children: ReactNode;
+}) => {
+  return (
+    <div
+      css={{
+        display: "grid",
+        gridAutoFlow: place === "top" ? "row" : "column",
+        gridTemplateColumns: place === "left" ? "100px 1fr" : undefined,
+        alignItems: "center",
+        gap: "8px",
+        padding: "8px 0px",
+        boxSizing: "border-box",
+      }}
+    >
+      <span
+        css={{
+          fontWeight: "bold",
+        }}
+      >
+        {label}
+      </span>
+      <div>{children}</div>
+    </div>
+  );
+};
+
+const CurrancySwitcher = () => {
+  const options = [
+    {
+      value: "USD",
+      label: "USD",
+    },
+    {
+      value: "EUR",
+      label: "EUR",
+    },
+    {
+      value: "RUB",
+      label: "RUB",
+    },
+  ];
+
+  const [currancy, setCurrancy] = useLocalStorage("currancy", "USD");
+
+  return (
+    <Select options={options} onChange={setCurrancy} selected={currancy} />
   );
 };
