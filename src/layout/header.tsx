@@ -52,7 +52,7 @@ export const Header = ({ type }: { type: HeaderType }) => {
         <Logo />
         <span>Travel explorer</span>
       </NavLink>
-      <div css={{ display: "flex" }}>
+      <div css={{ display: "flex", gap: "16px" }}>
         <Menu />
         <Actions />
       </div>

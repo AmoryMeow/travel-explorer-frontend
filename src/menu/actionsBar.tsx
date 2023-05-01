@@ -18,6 +18,7 @@ import {
   Select,
 } from "@package/ui";
 import { useTranslation, LanguageSwitcher } from "@package/i18n";
+import { routes, useNavigate } from "@package/routes";
 
 export const Actions = () => {
   return (
@@ -57,17 +58,18 @@ const Item = ({ children }: { children: ReactNode }) => {
 const UserAction = () => {
   const colors = useColors();
   const { t } = useTranslation("userAction");
+  const navigate = useNavigate();
 
   const menuOptions: DropdownItem[] = [
     {
       label: t("profile"),
       key: "profile",
-      onClick: () => console.log("profile"),
+      onClick: () => navigate(routes.profile),
     },
     {
       label: t("logOut"),
       key: "logOut",
-      onClick: () => console.log("logOut"),
+      onClick: () => navigate(routes.home),
       icon: <LogoutOutlined />,
     },
   ];
