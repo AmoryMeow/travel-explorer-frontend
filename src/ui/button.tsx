@@ -28,7 +28,7 @@ export const Button = ({
       icon={icon}
       shape={shape}
       onClick={onClick}
-      style={{ width: "100%", maxWidth: "320px" }}
+      style={{ width: "100%" }}
     >
       {text}
     </BaseButton>

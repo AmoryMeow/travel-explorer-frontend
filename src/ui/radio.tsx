@@ -14,6 +14,7 @@ type Props = {
   options: ButtonItem[];
   type?: "default" | "button";
   buttonType?: "outline" | "solid";
+  size?: "small" | "middle" | "large";
   onChange?: (value: string) => void;
 };
 
@@ -22,6 +23,7 @@ export const RadioButton = ({
   options,
   type,
   buttonType,
+  size,
   onChange,
 }: Props) => {
   const handleOnChange = ({ target: { value } }: RadioChangeEvent) => {
@@ -34,6 +36,7 @@ export const RadioButton = ({
       value={value}
       optionType={type}
       buttonStyle={buttonType}
+      size={size}
     >
       {options.map((item) => (
         <Radio value={item.value} key={item.value}>
