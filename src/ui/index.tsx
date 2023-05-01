@@ -6,3 +6,5 @@ export { SideBar } from "./sidebar";
 export { Select } from "./select";
 export { Button } from "./button";
 export { Switch } from "./switch";
+
+export * as icons from "./icons";
