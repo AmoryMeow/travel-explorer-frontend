@@ -40,6 +40,7 @@ function App() {
           <Route path={routes.blogs} element={<>blogs</>} />
           <Route path={routes.places} element={<>places</>} />
           <Route path={routes.myJourney} element={<>my journey</>} />
+          <Route path={routes.profile} element={<>profile</>} />
         </Routes>
       </Layout>
     </ConfigProvider>
