@@ -82,11 +82,6 @@ const UserAction = ({ onLogOut }: { onLogOut?: () => void }) => {
             onClick: () => navigate(`${routes.profile}/${currentUser.id}`),
           },
           {
-            label: "test profiles",
-            key: "profiles",
-            onClick: () => navigate(routes.profile),
-          },
-          {
             label: t("logOut"),
             key: "logOut",
             onClick: onLogOut,
