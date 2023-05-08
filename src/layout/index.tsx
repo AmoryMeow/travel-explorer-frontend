@@ -5,7 +5,13 @@ import { useColors } from "@package/ui";
 import { Header } from "./header";
 import { Footer } from "./footer";
 
-export const Layout = ({ children }: { children: ReactNode }) => {
+export const Layout = ({
+  onLogOut,
+  children,
+}: {
+  onLogOut?: () => void;
+  children: ReactNode;
+}) => {
   const colors = useColors();
   const [isShrink, setShrink] = useState(false);
 
@@ -49,7 +55,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         fontFamily: "sans-serif",
       }}
     >
-      <Header type={isShrink ? "float" : "transparent"} />
+      <Header type={isShrink ? "float" : "transparent"} onLogOut={onLogOut} />
       <main
         css={{
           maxWidth: "1920px",

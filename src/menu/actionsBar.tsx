@@ -6,6 +6,7 @@ import {
   UserOutlined,
   SettingOutlined,
   LogoutOutlined,
+  LoginOutlined,
 } from "@ant-design/icons";
 
 import {
@@ -19,8 +20,9 @@ import {
 } from "@package/ui";
 import { useTranslation, LanguageSwitcher } from "@package/i18n";
 import { routes, useNavigate } from "@package/routes";
+import { useCurrentUser } from "@package/auth";
 
-export const Actions = () => {
+export const Actions = ({ onLogOut }: { onLogOut?: () => void }) => {
   return (
     <ul
       css={{
@@ -31,7 +33,7 @@ export const Actions = () => {
     >
       <Space>
         <Item>
-          <UserAction />
+          <UserAction onLogOut={onLogOut} />
         </Item>
         <Item>
           <SettingAction />
@@ -55,23 +57,43 @@ const Item = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const UserAction = () => {
+const UserAction = ({ onLogOut }: { onLogOut?: () => void }) => {
   const colors = useColors();
   const { t } = useTranslation("userAction");
   const navigate = useNavigate();
+  const currentUser = useCurrentUser();
 
   const menuOptions: DropdownItem[] = [
-    {
-      label: t("profile"),
-      key: "profile",
-      onClick: () => navigate(routes.profile),
-    },
-    {
-      label: t("logOut"),
-      key: "logOut",
-      onClick: () => navigate(routes.home),
-      icon: <LogoutOutlined />,
-    },
+    ...(!currentUser
+      ? [
+          {
+            label: "Войти",
+            key: "login",
+            onClick: () => navigate(routes.login),
+            icon: <LoginOutlined />,
+          },
+        ]
+      : []),
+    ...(currentUser
+      ? [
+          {
+            label: t("profile"),
+            key: "profile",
+            onClick: () => navigate(`${routes.profile}/${currentUser.id}`),
+          },
+          {
+            label: "test profiles",
+            key: "profiles",
+            onClick: () => navigate(routes.profile),
+          },
+          {
+            label: t("logOut"),
+            key: "logOut",
+            onClick: onLogOut,
+            icon: <LogoutOutlined />,
+          },
+        ]
+      : []),
   ];
 
   return (
