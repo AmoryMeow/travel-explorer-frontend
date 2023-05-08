@@ -8,6 +8,7 @@ type Props = {
   type?: "text" | "link" | "ghost" | "default" | "primary" | "dashed";
   icon?: ReactNode;
   shape?: "default" | "circle" | "round";
+  htmlType?: "submit" | "button" | "reset";
   onClick?: () => void;
 };
 
@@ -18,6 +19,7 @@ export const Button = ({
   type,
   icon,
   shape,
+  htmlType,
   onClick,
 }: Props) => {
   return (
@@ -27,6 +29,7 @@ export const Button = ({
       type={type}
       icon={icon}
       shape={shape}
+      htmlType={htmlType}
       onClick={onClick}
       style={{ width: "100%" }}
     >
