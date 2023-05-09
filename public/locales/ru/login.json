@@ -1,0 +1,9 @@
+{
+  "username": "Пользователь",
+  "password": "Пароль",
+  "username_required": "Пожалуйста, введите имя пользователя!",
+  "password_required": "Пожалуйста, введите пароль!",
+  "login": "Войти",
+  "forgot_password": "Забыл пароль",
+  "register": "Регистрация"
+}

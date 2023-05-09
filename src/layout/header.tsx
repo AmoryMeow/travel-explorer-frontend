@@ -6,7 +6,13 @@ import { Logo } from "./logo";
 
 type HeaderType = "float" | "transparent";
 
-export const Header = ({ type }: { type: HeaderType }) => {
+export const Header = ({
+  type,
+  onLogOut,
+}: {
+  type: HeaderType;
+  onLogOut?: () => void;
+}) => {
   const colors = useColors();
   return (
     <nav
@@ -54,7 +60,7 @@ export const Header = ({ type }: { type: HeaderType }) => {
       </NavLink>
       <div css={{ display: "flex", gap: "16px" }}>
         <Menu />
-        <Actions />
+        <Actions onLogOut={onLogOut} />
       </div>
     </nav>
   );

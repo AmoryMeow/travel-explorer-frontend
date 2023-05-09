@@ -6,4 +6,5 @@ export const routes = {
   places: "/places",
   myJourney: "/my-journey",
   profile: "/profile",
+  login: "/login",
 };
