@@ -2,9 +2,11 @@ import { Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { getClassName, Button } from "@package/ui";
 import { useNavigate, routes } from "@package/routes";
+import { useTranslation } from "@package/i18n";
 
 const Login = ({ onLogin }: { onLogin?: () => void }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation("login");
 
   const onFinish = (values: any) => {
     localStorage.setItem("token", values.username);
@@ -39,28 +41,31 @@ const Login = ({ onLogin }: { onLogin?: () => void }) => {
         css={{
           maxWidth: "300px",
         }}
+        labelCol={{ flex: 10 }}
+        wrapperCol={{ flex: "auto" }}
+        labelAlign="left"
       >
         <Form.Item
-          label="Username"
+          label={t("username")}
           name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: t("username_required") }]}
         >
-          <Input prefix={<UserOutlined />} placeholder="Username" />
+          <Input prefix={<UserOutlined />} placeholder={t("username")} />
         </Form.Item>
         <Form.Item
-          label="Password"
+          label={t("password")}
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[{ required: true, message: t("password_required") }]}
         >
           <Input
             prefix={<LockOutlined />}
             type="password"
-            placeholder="Password"
+            placeholder={t("password")}
           />
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" text="Log in" htmlType="submit" />
+          <Button type="primary" text={t("login")} htmlType="submit" />
         </Form.Item>
         <div
           css={{
@@ -68,9 +73,9 @@ const Login = ({ onLogin }: { onLogin?: () => void }) => {
             justifyContent: "space-between",
           }}
         >
-          <a href="">Forgot password</a>
+          <a href="">{t("forgot_password")}</a>
 
-          <a href="">Register</a>
+          <a href="">{t("register")}</a>
         </div>
       </Form>
     </div>
