@@ -67,10 +67,15 @@ const UserAction = ({ onLogOut }: { onLogOut?: () => void }) => {
     ...(!currentUser
       ? [
           {
-            label: "Войти",
+            label: t("login"),
             key: "login",
             onClick: () => navigate(routes.login),
             icon: <LoginOutlined />,
+          },
+          {
+            label: t("signup"),
+            key: "signup",
+            onClick: () => navigate(routes.signup),
           },
         ]
       : []),

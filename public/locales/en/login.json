@@ -1,9 +1,0 @@
-{
-  "username": "Username",
-  "password": "Password",
-  "username_required": "Please input your username!",
-  "password_required": "Please input your password!",
-  "login": "Log in",
-  "forgot_password": "Forgot password",
-  "register": "Register"
-}
