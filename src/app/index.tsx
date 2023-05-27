@@ -8,7 +8,7 @@ import { Layout } from "@package/layout";
 import { getUserByToken, UserContextProvider, type User } from "@package/auth";
 
 const Profile = lazy(() => import("@package/profile"));
-const Login = lazy(() => import("@package/auth"));
+const Auth = lazy(() => import("@package/auth"));
 
 function App() {
   const { t, i18n } = useTranslation(["common", "hello"]);
@@ -22,7 +22,7 @@ function App() {
   const onAuthorizate = () => {
     const { data } = getUserByToken();
     if (!data) {
-      navigate(routes.home);
+      // navigate(routes.home);
     } else {
       setCurrentUser(data);
     }
@@ -74,7 +74,11 @@ function App() {
               <Route path={`${routes.profile}/*`} element={<Profile />} />
               <Route
                 path={`${routes.login}/*`}
-                element={<Login onLogin={onAuthorizate} />}
+                element={<Auth type="login" onLogin={onAuthorizate} />}
+              />
+              <Route
+                path={`${routes.signup}/*`}
+                element={<Auth type="signup" />}
               />
               <Route path="*" element={<>page not found</>} />
             </Routes>

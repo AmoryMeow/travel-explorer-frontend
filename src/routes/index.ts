@@ -7,4 +7,6 @@ export const routes = {
   myJourney: "/my-journey",
   profile: "/profile",
   login: "/login",
+  signup: "/signup",
+  forgotPassword: "/forgot-password",
 };

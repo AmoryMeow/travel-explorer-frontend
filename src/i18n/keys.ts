@@ -1,16 +1,20 @@
 export default {
   common: ["button_ok", "button_cancel"],
   hello: ["welcome"],
-  userAction: ["profile", "logOut"],
+  userAction: ["profile", "logOut", "login", "signup"],
   settingActions: ["title", "language", "theme", "currancy"],
-  login: [
+  auth: [
     "username",
     "password",
     "username_required",
     "password_required",
     "login",
+    "login_title",
     "forgot_password",
     "register",
+    "register_title",
+    "confirm_password",
+    "confirm_password_error",
   ],
   theme: ["light", "dark"],
 } as const;
